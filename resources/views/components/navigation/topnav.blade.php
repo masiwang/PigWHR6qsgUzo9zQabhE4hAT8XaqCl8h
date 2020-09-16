@@ -54,7 +54,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                         @include('components.icon.user')
-                        Anshory
+                        {{ $user->name }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('account') }}">Akun</a></li>
