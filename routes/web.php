@@ -25,6 +25,7 @@ Route::get( '/forgot', 'UserController@forgot')->name('forgot');
 Route::middleware('auth')->group(function(){
     Route::get('/account', 'UserController@index')->name('account');
     Route::get('/account/addresses', 'UserAddressController@index')->name('account-addresses');
+    Route::get('/account/portofolio', 'PortofolioController@index2')->name('account-portofolio');
 
     Route::get('/cart', 'CartController@index')->name('cart');
     Route::get('/cart/{category}/{product}/delete', 'CartController@delete');

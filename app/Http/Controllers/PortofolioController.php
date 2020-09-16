@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\FundCheckout;
 
 use Carbon\Carbon;
@@ -35,5 +36,12 @@ class PortofolioController extends Controller
             }
         }
         return view('portofolio.index', ['checkouts' => $checkouts, 'running_portofolios' => $running_portofolios, 'user' =>Auth::user()]);
+    }
+
+    public function index2(){
+        $portofolios = DB::table('fund_checkouts')
+            ->where('user_id', Auth::id())
+            ->get();
+        return view('user.portofolio', ['user' => Auth::user(), 'portofolios' => $portofolios]);
     }
 }

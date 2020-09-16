@@ -39,11 +39,12 @@
 </div>
 
 <div class="row mb-3 shadow-sm py-3 bg-white">
-  <div class="col-12">
-      <ul class="list-group">
-          <li class="list-group-item" style="border: 0px">
-              <span class="mr-2">@include('components.icon.chart')</span>
-              <a href="#" class="text-decoration-none text-dark">Portofolio</a>
+    <div class="col-12">
+        <ul class="list-group">
+            <li class="list-group-item" style="border: 0px">
+                <a href="{{ route('account-portofolio') }}" class="text-decoration-none {{Request::is('account/portofolio') ? 'text-success' : 'text-dark'}}">
+                <span class="mr-2">@include('components.icon.chart')</span> Portofolio
+            </a>
           </li>
           <li class="list-group-item" style="border: 0px">
               <span class="mr-2">@include('components.icon.cart')</span>
