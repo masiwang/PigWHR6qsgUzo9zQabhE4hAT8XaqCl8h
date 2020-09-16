@@ -36,7 +36,7 @@ class FundController extends Controller
             ->select('id')
             ->first();
         $products = FundProduct::join('fund_categories', 'fund_categories.id', 'fund_products.fund_category_id')
-        ->where('fund_products', 'fund_products.fund_category_id', $category->id)
+        ->where('fund_products.fund_category_id', $category->id)
         ->select(
             'fund_products.id as id',
             'image',
