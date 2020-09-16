@@ -24,8 +24,11 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('market') }}">Semua Produk</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="{{ url('market/sayur') }}">Sayur</a></li>
+                        <li><a class="dropdown-item" href="{{ url('market/buah') }}">Buah</a></li>
+                        <li><a class="dropdown-item" href="{{ url('market/daging') }}">Daging</a></li>
+                        <li><a class="dropdown-item" href="{{ url('market/ikan') }}">Ikan</a></li>
+                        <li><a class="dropdown-item" href="{{ url('market/lainnya') }}">Lainnya</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -35,15 +38,15 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{route('fund')}}">Semua Pendanaan</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/fund/pertanian') }}">Pertanian</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/fund/peternakan') }}">Peternakan</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/fund/perikanan') }}">Perikanan</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                         @include('components.icon.bell')
-                        <span class="ma-menu-title"></span>
+                        <span class="ma-menu-title">Notifikasi</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Another action</a></li>

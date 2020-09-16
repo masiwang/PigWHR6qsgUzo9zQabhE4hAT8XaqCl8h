@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\FundProduct;
 use App\FundCheckout;
 use App\User;
@@ -28,6 +29,30 @@ class FundController extends Controller
         ->get();
         return view('fund.index', ['products' => $products, 'user' => Auth::user()]);
     }
+
+    public function category($category_slug){
+        $category = DB::table('fund_categories')
+            ->where('slug', $category_slug)
+            ->select('id')
+            ->first();
+        $products = FundProduct::join('fund_categories', 'fund_categories.id', 'fund_products.fund_category_id')
+        ->where('fund_products', 'fund_products.fund_category_id', $category->id)
+        ->select(
+            'fund_products.id as id',
+            'image',
+            'fund_products.name as name',
+            'price',
+            'fund_products.slug as slug',
+            'periode',
+            'stock',
+            'size',
+            'expired_at',
+            'fund_categories.slug as category'
+        )
+        ->get();
+        return view('fund.index', ['products' => $products, 'user' => Auth::user()]);
+    }
+
     public function detail($category, $product){
         $product = FundProduct::join('fund_categories', 'fund_categories.id', 'fund_products.fund_category_id')
             ->where('fund_categories.slug', $category)

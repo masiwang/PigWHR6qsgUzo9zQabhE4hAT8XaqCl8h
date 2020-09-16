@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
 
     Route::get('/fund', 'FundController@index')->name('fund');
+    Route::get('/fund/{category}', 'FundController@category');
     Route::get('/fund/{category}/{product}', 'FundController@detail');
     Route::post('/fund/{categoty}/{product}/checkout', 'FundController@checkout');
 
