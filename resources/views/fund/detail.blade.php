@@ -54,10 +54,14 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        @if($is_verified->email_verified_at)
+                                        @if($is_verified->email_verified_at && $is_verified->ktp_verified_at)
                                         <button class="btn btn-success w-100" style="position: relative">
                                             <span class="text-light" style="position: relative; bottom: 2px">@include('components.icon.dollar')</span> <span style="position: relative">Danai</span>
                                         </button>
+                                        @else
+                                        <div class="alert alert-danger" role="alert">
+                                            Untuk melakukan pendanaan, harap konfirmasi alamat email dan Kartu Tanda Penduduk Anda.
+                                        </div>
                                         @endif
                                     </div>
                                 </div>
@@ -75,10 +79,7 @@
                         <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Deskripsi</a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Simulasi</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
@@ -89,8 +90,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        Simulasi
+                    </div>
                 </div>
             </div>
         </div>
