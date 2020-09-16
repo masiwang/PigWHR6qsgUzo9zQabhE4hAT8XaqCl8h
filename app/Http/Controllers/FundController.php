@@ -70,12 +70,13 @@ class FundController extends Controller
                 'fund_categories.name as category_name'
             )
             ->first();
-        $is_verified = User::where('id', Auth::id())->select('email_verified_at', 'ktp_verified_at')->first();
-        if(!$product){
-            return '404';
-        }else{
-            return view('fund.detail', ['product' => $product, 'is_verified' => $is_verified, 'user' => Auth::user()]);
-        }
+        $is_verified = User::where('id', Auth::id())->select('ktp_is_verified', 'email_is_verified')->first();
+        return dd($is_verified);
+        // if(!$product){
+        //     return '404';
+        // }else{
+        //     return view('fund.detail', ['product' => $product, 'is_verified' => $is_verified, 'user' => Auth::user()]);
+        // }
     }
 
     public function checkout(Request $request, $category, $product){
