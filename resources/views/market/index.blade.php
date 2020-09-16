@@ -16,22 +16,22 @@
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::is('/market')) ? 'active' : ''}}" href="{{ url('/market') }}">Semua Produk</a>
+                                    <a class="nav-link {{(Request::is('market')) ? 'active' : ''}}" href="{{ url('/market') }}">Semua Produk</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::is('/market/sayur')) ? 'active' : ''}}" href="{{ url('/market/sayur') }}">Sayur</a>
+                                    <a class="nav-link {{(Request::is('market/sayur')) ? 'active' : ''}}" href="{{ url('/market/sayur') }}">Sayur</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::is('/market/buah')) ? 'active' : ''}}" href="{{ url('/market/buah') }}">Buah</a>
+                                    <a class="nav-link {{(Request::is('market/buah')) ? 'active' : ''}}" href="{{ url('/market/buah') }}">Buah</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::is('/market/daging')) ? 'active' : ''}}" href="{{ url('/market/daging') }}">Daging</a>
+                                    <a class="nav-link {{(Request::is('market/daging')) ? 'active' : ''}}" href="{{ url('/market/daging') }}">Daging</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::is('/market/ikan')) ? 'active' : ''}}" href="{{ url('/market/ikan') }}">Ikan</a>
+                                    <a class="nav-link {{(Request::is('market/ikan')) ? 'active' : ''}}" href="{{ url('/market/ikan') }}">Ikan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::is('/market/lain-lain')) ? 'active' : ''}}" href="{{ url('/market/lain-lain') }}">Lainnya</a>
+                                    <a class="nav-link {{(Request::is('market/lain-lain')) ? 'active' : ''}}" href="{{ url('/market/lain-lain') }}">Lainnya</a>
                                 </li>
                             </ul>
                         </div>
