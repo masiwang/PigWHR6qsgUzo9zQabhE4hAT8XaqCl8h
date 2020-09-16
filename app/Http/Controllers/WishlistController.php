@@ -32,6 +32,6 @@ class WishlistController extends Controller
         )
         ->limit(6)
         ->get();
-        return view('wishlist.index', ['wishlists' => $wishlists, 'recommends' => $recommends]);
+        return view('wishlist.index', ['wishlists' => $wishlists, 'recommends' => $recommends, 'user'=> Auth::user()]);
     }
 }

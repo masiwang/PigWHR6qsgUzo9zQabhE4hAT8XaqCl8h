@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\FundCheckout;
 use App\Bank;
 use App\FundPayment;
+use App\User;
 
 class PaymentController extends Controller
 {
@@ -19,7 +20,7 @@ class PaymentController extends Controller
             ->get();
         if($checkout){
             $banks = Bank::all();
-            return view('payment.fund', ['invoice_code' => $invoice_code, 'banks' => $banks]);
+            return view('payment.fund', ['invoice_code' => $invoice_code, 'banks' => $banks, 'user' => Auth::user()]);
         }else{
             return '404';
         }

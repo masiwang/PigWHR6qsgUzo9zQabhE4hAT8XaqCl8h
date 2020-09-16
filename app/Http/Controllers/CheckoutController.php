@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\MarketProduct;
 use App\MarketCart;
+use App\User;
 
 class CheckoutController extends Controller
 {
@@ -34,6 +35,7 @@ class CheckoutController extends Controller
                 'market_payments.payment_code as payment_code'
             )
             ->get();
-        return view('checkout.index', ['checkouts' => $checkouts, 'recommends' => $recommends]);
+        
+        return view('checkout.index', ['checkouts' => $checkouts, 'recommends' => $recommends, 'user' => Auth::user()]);
     }
 }

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 class UserAddressController extends Controller
 {
     public function index(){
-        $user = Auth::user();
-        return view('user.addresses', ['user' => $user]);
+        return view('user.addresses', ['user' => Auth::user()]);
     }
 }

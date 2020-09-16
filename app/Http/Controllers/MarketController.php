@@ -28,7 +28,7 @@ class MarketController extends Controller
                         'market_categories.slug as category'
                     )
                     ->get();
-        return view('market.index', ['products' => $products]);
+        return view('market.index', ['products' => $products, 'user' => Auth::user()]);
     }
 
     public function category($category){
@@ -45,7 +45,7 @@ class MarketController extends Controller
                 'market_categories.slug as category'
             )
             ->get();
-        return view('market.index', ['products' => $products]);
+        return view('market.index', ['products' => $products, 'user' => Auth::user()]);
     }
 
     public function detail($category, $product){
@@ -83,7 +83,7 @@ class MarketController extends Controller
         if(!$product){
             return '404';
         }else{
-            return view('market.detail-product', ['product' => $product, 'recommends' => $recommends, 'email_is_verified'=> $email_is_verified]);
+            return view('market.detail-product', ['product' => $product, 'recommends' => $recommends, 'email_is_verified'=> $email_is_verified, 'user' => Auth::user()]);
         }
     }
 

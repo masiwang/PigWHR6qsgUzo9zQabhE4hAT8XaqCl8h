@@ -38,7 +38,10 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/logout', 'UserController@loggedOut')->name('logout');
 
-    Route::get('/market', 'MarketController@index')->name('market');
+    // Route::get('/market', 'MarketController@index')->name('market');
+    Route::get('/market', function(){
+        return 'Sukses';
+    });
     Route::get('/market/{category}', 'MarketController@category');
     Route::get('/market/{category}/{product}', 'MarketController@detail');
     Route::get('/market/{category}/{product}/wish', 'MarketController@wish');

@@ -26,7 +26,7 @@ class FundController extends Controller
             'fund_categories.slug as category'
         )
         ->get();
-        return view('fund.index', ['products' => $products]);
+        return view('fund.index', ['products' => $products, 'user' => Auth::user()]);
     }
     public function detail($category, $product){
         $product = FundProduct::join('fund_categories', 'fund_categories.id', 'fund_products.fund_category_id')
@@ -49,7 +49,7 @@ class FundController extends Controller
         if(!$product){
             return '404';
         }else{
-            return view('fund.detail', ['product' => $product, 'is_verified' => $is_verified]);
+            return view('fund.detail', ['product' => $product, 'is_verified' => $is_verified, 'user' => Auth::user()]);
         }
     }
 

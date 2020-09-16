@@ -8,6 +8,7 @@ use App\MarketProduct;
 use App\MarketCart;
 use App\MarketCartProduct;
 use App\MarketCategory;
+use App\User;
 use Carbon\Carbon;
 
 class CartController extends Controller
@@ -47,7 +48,8 @@ class CartController extends Controller
             )
             ->get();
         }
-        return view('cart.index', ['cart_products' => $cart_products,'recommends' => $recommends]);
+        $user = Auth::user();
+        return view('cart.index', ['cart_products' => $cart_products,'recommends' => $recommends, 'user' => $user]);
     }
 
     public function delete($category, $product){

@@ -34,6 +34,6 @@ class PortofolioController extends Controller
                 array_push($running_portofolios, Carbon::parse($checkout->fund_start)->floatDiffInMonths(Carbon::now(), false));
             }
         }
-        return view('portofolio.index', ['checkouts' => $checkouts, 'running_portofolios' => $running_portofolios]);
+        return view('portofolio.index', ['checkouts' => $checkouts, 'running_portofolios' => $running_portofolios, 'user' =>Auth::user()]);
     }
 }

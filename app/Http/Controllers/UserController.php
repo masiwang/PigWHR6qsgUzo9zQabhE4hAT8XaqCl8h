@@ -64,9 +64,7 @@ class UserController extends Controller
     }
 
     public function index(){
-        $user = Auth::user();
-        // return dd($user);
-        return view('user.index', ['user' => $user]);
+        return view('user.index', ['user' => Auth::user()]);
     }
 
     public function send_mail_do($email, $name, $email_verification_code)
