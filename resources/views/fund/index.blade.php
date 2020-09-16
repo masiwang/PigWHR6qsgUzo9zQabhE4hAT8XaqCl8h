@@ -16,16 +16,16 @@
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link {{(!Request::get('kategori')) ? 'active' : ''}}" href="{{ url('/fund') }}">Semua Produk</a>
+                                    <a class="nav-link {{ Request::is('/fund') ? 'active' : ''}}" href="{{ url('/fund') }}">Semua Produk</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::get('kategori') == 'Pertanian') ? 'active' : ''}}" href="{{ url('/fund?kategori=Pertanian') }}">Pertanian</a>
+                                    <a class="nav-link {{ Request::is('/fund/pertanian') ? 'active' : ''}}" href="{{ url('/fund/ertanian') }}">Pertanian</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::get('kategori') == 'Peternakan') ? 'active' : ''}}" href="{{ url('/fund?kategori=Peternakan') }}">Peternakan</a>
+                                    <a class="nav-link {{ Request::is('/fund/peternakan') ? 'active' : ''}}" href="{{ url('/fund/peternakan') }}">Peternakan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{(Request::get('kategori') == 'Perikanan') ? 'active' : ''}}" href="{{ url('/fund?kategori=Perikanan') }}">Perikanan</a>
+                                    <a class="nav-link {{ Request::is('/fund/perikanan') ? 'active' : ''}}" href="{{ url('/fund/perikanan') }}">Perikanan</a>
                                 </li>
                             </ul>
                         </div>
