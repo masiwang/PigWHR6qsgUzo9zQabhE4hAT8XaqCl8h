@@ -60,7 +60,7 @@
                         {{ $user->name }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ route('account') }}">Akuns</a></li>
+                        <li><a class="dropdown-item" href="{{ route('account') }}">Akun</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('wishlist') }}">Suka</a></li>
                         <li><a class="dropdown-item" href="{{ route('cart') }}">Keranjang</a></li>
