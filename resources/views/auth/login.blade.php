@@ -31,13 +31,13 @@
                         <div class="input-group mt-4 row">
                             <div class="col-12 d-flex justify-content-between">
                                 <button class="btn btn-success" type="submit" id="submitForm">Masuk</button>
-                                <a href="{{ route('forgot') }}" class="btn btn-link text-decoration-none">Lupa kata sandi?</a>
+                                <a href="{{ route('forgot') }}" class="btn btn-link text-decoration-none text-success">Lupa kata sandi?</a>
                             </div>
                         </div>
                     </form>
                     <div class="row mt-3">
                         <div class="col-12">
-                           Belum memiliki akun? <a href="{{ route('register') }}" class="btn btn-link btn-sm text-decoration-none">Registrasi</a>
+                           Belum memiliki akun? <a href="{{ route('register') }}" class="btn btn-link btn-sm text-decoration-none text-success">Registrasi</a>
                         </div>
                     </div>
                 </div>

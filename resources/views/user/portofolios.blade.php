@@ -5,7 +5,7 @@
         <div class="row mt-3">
             <div class="col-12">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-white">
+                    <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ url('/') }}" class="text-decoration-none">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Akun</li>
                     </ol>

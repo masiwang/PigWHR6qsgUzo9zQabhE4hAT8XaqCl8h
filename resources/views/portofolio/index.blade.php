@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                         @if ($checkouts)
-                            {{ $n = 0 }}
+                            @php $n = 0 @endphp
                             @foreach ($checkouts as $checkout)
                                 <tr>
                                     <td>{{ $checkout->portofolio_code }}</td>
@@ -53,7 +53,7 @@
                                         {{ $checkout->fund_nominal*(((1+$checkout->monthly_return)^2)-1) }}
                                     </td>
                                 </tr>
-                                {{ $n++ }}
+                                @php $n++ @endphp
                             @endforeach
                         @else
                             <tr>

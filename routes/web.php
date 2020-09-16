@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', 'LandingController@index')->name('landing');
+Route::get('/', function(){
+    return '4040404';
+});
 Route::get( '/register', 'UserController@register')->name('register');
 Route::post('/register', 'UserController@register_do')->name('register-do');
 Route::get( '/login', 'UserController@login')->name('login');

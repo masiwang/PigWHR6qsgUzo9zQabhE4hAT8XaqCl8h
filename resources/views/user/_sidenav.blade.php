@@ -34,10 +34,6 @@
               <span class="mr-2">@include('components.icon.credit-card')</span>
               <a href="#"class="text-decoration-none text-dark">Metode Pembayaran</a>
           </li>
-          <li class="list-group-item" style="border: 0px">
-              <span class="mr-2">@include('components.icon.telephone')</span>
-              <a href="#"class="text-decoration-none text-dark">Kontak</a>
-          </li>
       </ul>
   </div>
 </div>

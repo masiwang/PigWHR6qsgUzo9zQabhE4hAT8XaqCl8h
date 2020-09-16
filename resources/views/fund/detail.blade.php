@@ -54,12 +54,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        @if($is_verified->email_verified_at)
-                                            @if($is_verified->ktp_verified_at)
-                                            <button class="btn btn-success w-100" style="position: relative">
-                                                <span class="text-light" style="position: relative; bottom: 2px">@include('components.icon.dollar')</span> <span style="position: relative">Danai</span>
-                                            </button>
-                                            @endif
+                                        @if($is_verified->ktp_is_verified && $is_verified->email_is_verified)
+                                        <button class="btn btn-success w-100" style="position: relative">
+                                            <span class="text-light" style="position: relative; bottom: 2px">@include('components.icon.dollar')</span> <span style="position: relative">Danai</span>
+                                        </button>
                                         @else
                                         <div class="alert alert-danger" role="alert">
                                             Untuk melakukan pendanaan, harap konfirmasi alamat email dan Kartu Tanda Penduduk Anda.
