@@ -20,7 +20,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                         @include('components.icon.cart')
-                        <span class="ma-menu-title"></span>
+                        <span>Market</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('market') }}">Semua Produk</a></li>
@@ -31,7 +31,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                         @include('components.icon.chart')
-                        <span class="ma-menu-title"></span>
+                        <span>Funding</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{route('fund')}}">Semua Pendanaan</a></li>
@@ -57,7 +57,7 @@
                         {{ $user->name }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ route('account') }}">Akun</a></li>
+                        <li><a class="dropdown-item" href="{{ route('account') }}">Akuns</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('wishlist') }}">Suka</a></li>
                         <li><a class="dropdown-item" href="{{ route('cart') }}">Keranjang</a></li>
