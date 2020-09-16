@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
 
@@ -13,6 +14,7 @@ use App\MarketCartProduct;
 use App\MarketCategory;
 use App\MarketWishlist;
 use App\User;
+
 
 class MarketController extends Controller
 {
@@ -49,10 +51,15 @@ class MarketController extends Controller
     }
 
     public function detail($category, $product){
-        $product = MarketProduct::leftJoin('market_categories', 'market_categories.id', 'market_products.category_id')
-            ->leftJoin('market_wishlists', 'market_wishlists.market_product_id', 'market_products.id')
-            ->where('market_categories.slug', $category)
-            ->where('market_products.slug', $product)
+        $product = MarketProduct::leftJoin(
+            DB::raw(
+                    '(SELECT market_wishlists.market_product_id as wish 
+                        FROM market_wishlists 
+                        JOIN users ON market_wishlists.user_id = users.id 
+                        WHERE users.id = 6) my_wish'
+                ), 'my_wish.wish', 'market_products.id'
+            )
+            ->leftJoin('market_categories', 'market_categories.id', 'market_products.category_id')
             ->select(
                 'market_products.image as image',
                 'market_products.name as name',
@@ -63,8 +70,9 @@ class MarketController extends Controller
                 'market_products.stock as stock',
                 'market_categories.slug as category_slug',
                 'market_categories.name as category_name',
-                'market_wishlists.id as is_wishlist'
+                'my_wish.wish as is_wishlist'
             )
+            ->where('market_products.slug', $product)
             ->first();
         $recommends = MarketProduct::join('market_categories', 'market_categories.id', 'market_products.category_id')
                     ->where('is_delete', 0)
