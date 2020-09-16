@@ -32,7 +32,7 @@ class UserController extends Controller
             'name' => $request->firstName,
             'last_name' => $request->lastName,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'email_verification_code' => $email_verification_code,
             'created_at' => Carbon::now()
         ];
@@ -54,6 +54,8 @@ class UserController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard');
+        }else{
+            return back()->with('error', 'Maaf email atau password anda salah.');
         }
     }
 
