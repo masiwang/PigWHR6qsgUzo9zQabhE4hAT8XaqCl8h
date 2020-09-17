@@ -76,9 +76,9 @@ class PortofolioController extends Controller
                 'fund_products.started_at',
                 'fund_products.ended_at'
                 )
-            ->where('user_id', Auth::id())
-            ->where('fund_products.name', '=', 'Peternakan Sapi Perah')
+            ->where('user_id', $request->get('user_id'))
+            ->where('fund_products.name', 'like', '%'.$request->get('query').'%')
             ->get();
-        return response()->json(['haha' => 123], 200);
+        return response()->json($portofolios, 200);
     }
 }

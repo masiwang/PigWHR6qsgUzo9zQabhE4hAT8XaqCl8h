@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('login', 'UserController@_login');
-Route::middleware('jwt.verify')->group(function(){
-    Route::get('/portofolio/search', 'PortofolioController@search');
+Route::middleware('api')->group(function(){
+    Route::post('/portofolio/search', 'PortofolioController@search');
 });
