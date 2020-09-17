@@ -30,11 +30,11 @@
                                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" data-display="static"  aria-expanded="false">
                                         <i class="fas fa-filter"></i> 
                                     </button>
-                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                      <li><a class="dropdown-item" href="#"><i class="fas fa-clock"></i> Menunggu pembayaran</a></li>
-                                      <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Dalam pendanaan</a></li>
-                                      <li><a class="dropdown-item" href="#"><i class="fas fa-coins"></i> Pendanaan selesai</a></li>
-                                      <li><a class="dropdown-item" href="#"><i class="fas fa-exclamation-triangle"></i> Pendanaan gagal</a></li>
+                                    <ul id="portofolioDropdown" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                      <li data-status="menunggu-pembayaran"><a class="dropdown-item"><i class="fas fa-clock"></i> Menunggu pembayaran</a></li>
+                                      <li data-status="dalam-pendanaan"><a class="dropdown-item"><i class="fas fa-chart-line"></i> Dalam pendanaan</a></li>
+                                      <li data-status="pendanaan-selesai"><a class="dropdown-item"><i class="fas fa-coins"></i> Pendanaan selesai</a></li>
+                                      <li data-status="pendanaan-gagal"><a class="dropdown-item"><i class="fas fa-exclamation-triangle"></i> Pendanaan gagal</a></li>
                                     </ul>
                                   </div>
                             </div>
@@ -202,7 +202,9 @@
     <script>
         var portSearch = $('#portofolioSearch');
         var portList = $('#portofolioList');
+        var portDowndown = $('#portofolioDropdown>li');
         var csrf = $('meta[name="csrf-token"]').attr('content');
+
         function numberParser(number){
             return new Intl.NumberFormat('id-ID', { maximumSignificantDigits: 3 }).format(number)
         }
@@ -214,18 +216,18 @@
             return arrDate[0]+' '+month[arrDate[1]-1]+' '+arrDate[2];
         }
         portSearch.on('keyup', function(){
-            var query = portSearch.val();
+            portList.html('');
+            var name = portSearch.val();
             $.ajax({
                 type: "post",
                 url: "/api/portofolio/search",
                 data: {
                     '_token': csrf,
                     'user_id': "{{ $user->id }}",
-                    'query': query
+                    'name': name
                 },
                 dataType: "json",
                 success: function (response) {
-                    portList.html('');
                     var portHtml = '';
                     response.forEach(e => {
                         var badge = '';
@@ -243,7 +245,7 @@
                                 badge = '<small style="font-size: 0.8rem" class="badge bg-danger">Pendanaan gagal</small>';
                                 break;
                         }
-                        portHtml += '<div class="card w-100 mb-3">\
+                        portHtml += '<div class="card w-100 mb-3 shadow-sm" style="border: 0px">\
                                             <div class="card-body">\
                                                 <div class="row d-flex align-items-stretch">\
                                                     <div class="col-1">\
@@ -278,6 +280,74 @@
                                         </div>';
                     });
                     portList.html(portHtml);
+                }
+            });
+        });
+        portDowndown.on('click', function(){
+            var status = $(this).attr('data-status');
+            $.ajax({
+                type: "post",
+                url: "/api/portofolio/search",
+                data: {
+                    '_token': csrf,
+                    'user_id': "{{ $user->id }}",
+                    'status': status
+                },
+                dataType: "json",
+                success: function (response) {
+                    $('#portofolioList').html('');
+                    var portHtml = '';
+                    response.forEach(e => {
+                        var badge = '';
+                        switch (e.fund_checkout_status_id) {
+                            case 1:
+                                badge = '<small style="font-size: 0.8rem" class="badge bg-warning text-dark">Menunggu pembayaran</small>';
+                                break;
+                            case 2:
+                                badge = '<small style="font-size: 0.8rem" class="badge bg-success">Dalam pendanaan</small>';
+                                break;
+                            case 3:
+                                badge = '<small style="font-size: 0.8rem" class="badge bg-primary">Pendanaan selesai</small>';
+                                break;
+                            case 4:
+                                badge = '<small style="font-size: 0.8rem" class="badge bg-danger">Pendanaan gagal</small>';
+                                break;
+                        }
+                        portHtml += '<div class="card w-100 mb-3 shadow-sm" style="border: 0px">\
+                                            <div class="card-body">\
+                                                <div class="row d-flex align-items-stretch">\
+                                                    <div class="col-1">\
+                                                        <div class="ma-round-image-40 mb-3">\
+                                                            <img src="https://images.unsplash.com/photo-1503235930437-8c6293ba41f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80">\
+                                                        </div>\
+                                                    </div>\
+                                                    <div class="col-8">\
+                                                        <h6 class="mb-0">' + e.name + '</h6>\
+                                                        <p class="mb-0" style="font-size: .8rem">' + e.vendor_name + '</p>\
+                                                    </div>\
+                                                    <div class="col-3 text-right d-flex align-items-center">\
+                                                        <div class="w-100 text-right">' + badge + '<h5 class="ml-auto">Rp.' + numberParser(parseInt(e.price) * parseInt(e.lots)) + '</h5>\
+                                                        </div>\
+                                                    </div>\
+                                                </div>\
+                                                <div class="row">\
+                                                    <div class="col-4">\
+                                                        <span style="font-size: .8rem">Return</span><br>\
+                                                        <p class="mb-0">' + e.return+'%/' + e.return_type + '</p>\
+                                                    </div>\
+                                                    <div class="col-4 text-center">\
+                                                        <span style="font-size: .8rem">Tgl. Mulai</span><br>\
+                                                        <p class="mb-0">' + dateParser(e.started_at) + '</p>\
+                                                    </div>\
+                                                    <div class="col-4 text-right">\
+                                                        <span style="font-size: .8rem">Tgl. Selesai</span><br>\
+                                                        <p class="mb-0">' + dateParser(e.ended_at) + '</p>\
+                                                    </div>\
+                                                </div>\
+                                            </div>\
+                                        </div>';
+                    });
+                    $('#portofolioList').html(portHtml);
                 }
             });
         });

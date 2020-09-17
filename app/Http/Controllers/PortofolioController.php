@@ -60,7 +60,7 @@ class PortofolioController extends Controller
     }
 
     // === API Section ===
-    public function search(Request $request){
+    public function _search(Request $request){
         $portofolios = DB::table('fund_checkouts')
             ->join('fund_products', 'fund_products.id', 'fund_checkouts.fund_product_id')
             ->join('fund_return_types', 'fund_return_types.id', 'fund_products.return_type_id')
@@ -75,10 +75,24 @@ class PortofolioController extends Controller
                 'fund_return_types.name as return_type',
                 'fund_products.started_at',
                 'fund_products.ended_at'
-                )
-            ->where('user_id', $request->get('user_id'))
-            ->where('fund_products.name', 'like', '%'.$request->get('query').'%')
-            ->get();
+            );
+            if($request->get('name')){
+                $portofolios = $portofolios->where('fund_products.name', 'like', '%'.$request->get('name').'%');
+            }
+            if($request->get('status') == 'menunggu-pembayaran'){
+                $portofolios = $portofolios->where('fund_checkouts.fund_checkout_status_id', 1);
+            }
+            if($request->get('status') == 'dalam-pendanaan'){
+                $portofolios = $portofolios->where('fund_checkouts.fund_checkout_status_id', 2);
+            }
+            if($request->get('status') == 'pendanaan-selesai'){
+                $portofolios = $portofolios->where('fund_checkouts.fund_checkout_status_id', 3);
+            }
+            if($request->get('status') == 'pendanaan-gagal'){
+                $portofolios = $portofolios->where('fund_checkouts.fund_checkout_status_id', 4);
+            }
+            $portofolios = $portofolios->where('user_id', $request->get('user_id'))
+                ->get();
         return response()->json($portofolios, 200);
     }
 }

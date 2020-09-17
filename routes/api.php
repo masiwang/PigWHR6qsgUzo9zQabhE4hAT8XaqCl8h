@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'UserController@_login');
 Route::middleware('api')->group(function(){
-    Route::post('/portofolio/search', 'PortofolioController@search');
+    Route::post('/portofolio/search', 'PortofolioController@_search');
 });
