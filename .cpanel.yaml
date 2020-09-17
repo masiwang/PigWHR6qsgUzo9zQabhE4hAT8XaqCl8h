@@ -1,9 +1,0 @@
----
- 
-deployment:
- 
- tasks:
- 
- - export DEPLOYPATH=/home/u1005643/repositories/PigWHR6qsgUzo9zQabhE4hAT8XaqCl8h
- 
- - /usr/bin/rsync -Paz * $DEPLOYPATH --delete

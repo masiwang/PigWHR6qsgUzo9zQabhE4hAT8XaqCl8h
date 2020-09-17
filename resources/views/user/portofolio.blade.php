@@ -58,28 +58,28 @@
                                             </div>
                                         </div>
                                         <div class="col-8">
-                                            <h6 class="mb-0">Garam Dapur Soya</h6>
-                                            <p class="mb-0" style="font-size: .8rem">PT. Indonesia Conta Sragen</p>
+                                            <h6 class="mb-0">{{ $portofolio->name }}</h6>
+                                            <p class="mb-0" style="font-size: .8rem">{{ $portofolio->vendor_name }}</p>
                                         </div>
                                         <div class="col-3 text-right d-flex align-items-center">
                                             <div class="w-100 text-right">
                                                 <small style="font-size: 0.8rem" class="badge bg-warning text-dark">Menunggu pembayaran</small>
-                                                <h5 class="ml-auto">Rp. 100.000.000</h5>
+                                                <h5 class="ml-auto">Rp.{{ number_format((int)$portofolio->price*(int)$portofolio->lots, 0, ',', '.') }}</h5>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
                                             <span style="font-size: .8rem">Return</span><br>
-                                            <p class="mb-0">10%</p>
+                                            <p class="mb-0">{{ $portofolio->return }}%/{{ $portofolio->return_type }}</p>
                                         </div>
                                         <div class="col-4 text-center">
                                             <span style="font-size: .8rem">Tgl. Mulai</span><br>
-                                            <p class="mb-0">2 Januari 2020</p>
+                                            <p class="mb-0">{{ \Carbon\Carbon::parse($portofolio->started_at)->format('j F Y') }}</p>
                                         </div>
                                         <div class="col-4 text-right">
                                             <span style="font-size: .8rem">Tgl. Selesai</span><br>
-                                            <p class="mb-0">2 Februari 2020</p>
+                                            <p class="mb-0">{{ \Carbon\Carbon::parse($portofolio->ended_at)->format('j F Y') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -104,28 +104,28 @@
                                             </div>
                                         </div>
                                         <div class="col-8">
-                                            <h6 class="mb-0">Garam Dapur Soya</h6>
-                                            <p class="mb-0" style="font-size: .8rem">PT. Indonesia Conta Sragen</p>
+                                            <h6 class="mb-0">{{ $portofolio->name }}</h6>
+                                            <p class="mb-0" style="font-size: .8rem">{{ $portofolio->vendor_name }}</p>
                                         </div>
                                         <div class="col-3 text-right d-flex align-items-center">
                                             <div class="w-100 text-right">
                                                 <small style="font-size: 0.8rem" class="badge bg-success">Dalam pendanaan</small>
-                                                <h5 class="ml-auto">Rp. 10.000.000</h5>
+                                                <h5 class="ml-auto">Rp.{{ number_format((int)$portofolio->price*(int)$portofolio->lots, 0, ',', '.') }}</h5>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
                                             <span style="font-size: .8rem">Return</span><br>
-                                            <p class="mb-0">10%</p>
+                                            <p class="mb-0">{{ $portofolio->return }}%/{{ $portofolio->return_type }}</p>
                                         </div>
                                         <div class="col-4 text-center">
                                             <span style="font-size: .8rem">Tgl. Mulai</span><br>
-                                            <p class="mb-0">2 Januari 2020</p>
+                                            <p class="mb-0">{{ \Carbon\Carbon::parse($portofolio->started_at)->format('j F Y') }}</p>
                                         </div>
                                         <div class="col-4 text-right">
                                             <span style="font-size: .8rem">Tgl. Selesai</span><br>
-                                            <p class="mb-0">2 Februari 2020</p>
+                                            <p class="mb-0">{{ \Carbon\Carbon::parse($portofolio->ended_at)->format('j F Y') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -150,28 +150,28 @@
                                             </div>
                                         </div>
                                         <div class="col-8">
-                                            <h6 class="mb-0">Garam Dapur Soya</h6>
-                                            <p class="mb-0" style="font-size: .8rem">PT. Indonesia Conta Sragen</p>
+                                            <h6 class="mb-0">{{ $portofolio->name }}</h6>
+                                            <p class="mb-0" style="font-size: .8rem">{{ $portofolio->vendor_name }}</p>
                                         </div>
                                         <div class="col-3 text-right d-flex align-items-center">
                                             <div class="w-100 text-right">
                                                 <small style="font-size: 0.8rem" class="badge bg-primary">Pendanaan selesai</small>
-                                                <h5 class="ml-auto">Rp. 10.000.000</h5>
+                                                <h5 class="ml-auto">Rp.{{ number_format((int)$portofolio->price*(int)$portofolio->lots, 0, ',', '.') }}</h5>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
                                             <span style="font-size: .8rem">Return</span><br>
-                                            <p class="mb-0">10%</p>
+                                            <p class="mb-0">{{ $portofolio->return }}%/{{ $portofolio->return_type }}</p>
                                         </div>
                                         <div class="col-4 text-center">
                                             <span style="font-size: .8rem">Tgl. Mulai</span><br>
-                                            <p class="mb-0">2 Januari 2020</p>
+                                            <p class="mb-0">{{ \Carbon\Carbon::parse($portofolio->started_at)->format('j F Y') }}</p>
                                         </div>
                                         <div class="col-4 text-right">
                                             <span style="font-size: .8rem">Tgl. Selesai</span><br>
-                                            <p class="mb-0">2 Februari 2020</p>
+                                            <p class="mb-0">{{ \Carbon\Carbon::parse($portofolio->ended_at)->format('j F Y') }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -196,28 +196,28 @@
                                             </div>
                                         </div>
                                         <div class="col-8">
-                                            <h6 class="mb-0">Garam Dapur Soya</h6>
-                                            <p class="mb-0" style="font-size: .8rem">PT. Indonesia Conta Sragen</p>
+                                            <h6 class="mb-0">{{ $portofolio->name }}</h6>
+                                            <p class="mb-0" style="font-size: .8rem">{{ $portofolio->vendor_name }}</p>
                                         </div>
                                         <div class="col-3 text-right d-flex align-items-center">
                                             <div class="w-100 text-right">
                                                 <small style="font-size: 0.8rem" class="badge bg-danger">Pendanaan gagal</small>
-                                                <h5 class="ml-auto">Rp. 10.000.000</h5>
+                                                <h5 class="ml-auto">Rp.{{ number_format((int)$portofolio->price*(int)$portofolio->lots, 0, ',', '.') }}</h5>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
                                             <span style="font-size: .8rem">Return</span><br>
-                                            <p class="mb-0">10%</p>
+                                            <p class="mb-0">{{ $portofolio->return }}%/{{ $portofolio->return_type }}</p>
                                         </div>
                                         <div class="col-4 text-center">
                                             <span style="font-size: .8rem">Tgl. Mulai</span><br>
-                                            <p class="mb-0">2 Januari 2020</p>
+                                            <p class="mb-0">{{ \Carbon\Carbon::parse($portofolio->started_at)->format('j F Y') }}</p>
                                         </div>
                                         <div class="col-4 text-right">
                                             <span style="font-size: .8rem">Tgl. Selesai</span><br>
-                                            <p class="mb-0">2 Februari 2020</p>
+                                            <p class="mb-0">{{ \Carbon\Carbon::parse($portofolio->ended_at)->format('j F Y') }}</p>
                                         </div>
                                     </div>
                                 </div>
