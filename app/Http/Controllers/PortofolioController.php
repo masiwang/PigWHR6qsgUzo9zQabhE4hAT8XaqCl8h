@@ -58,4 +58,27 @@ class PortofolioController extends Controller
             ->get();
         return view('user.portofolio', ['user' => Auth::user(), 'portofolios' => $portofolios]);
     }
+
+    // === API Section ===
+    public function search(Request $request){
+        $portofolios = DB::table('fund_checkouts')
+            ->join('fund_products', 'fund_products.id', 'fund_checkouts.fund_product_id')
+            ->join('fund_return_types', 'fund_return_types.id', 'fund_products.return_type_id')
+            ->leftJoin('vendors', 'vendors.id', 'fund_products.vendor_id')
+            ->select(
+                'fund_products.name as name',
+                'fund_checkouts.fund_checkout_status_id',
+                'vendors.name as vendor_name',
+                'fund_products.price as price',
+                'fund_checkouts.lots as lots',
+                'fund_products.return as return',
+                'fund_return_types.name as return_type',
+                'fund_products.started_at',
+                'fund_products.ended_at'
+                )
+            ->where('user_id', Auth::id())
+            ->where('fund_products.name', '=', 'Peternakan Sapi Perah')
+            ->get();
+        return response()->json(['haha' => 123], 200);
+    }
 }

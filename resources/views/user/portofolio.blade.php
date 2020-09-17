@@ -20,9 +20,12 @@
             <div class="col-9">
                 <div class="row py-3 ml-xl-2 bg-bg">
                     <div class="col-12">
+                        <!-- TODO: search & select, di server databasenya belum di update -->
                         <div class="mb-3 d-flex bd-highlight">
                             <div class="flex-grow-1">
-                              <input type="text" class="form-control" id="inputPassword" placeholder="Cari pendanaan">
+                                <input type="text" list="portofolioOptions" class="form-control" id="portofolioSearch" placeholder="Cari pendanaan">
+                                <datalist id="portofolioOptions">
+                                </datalist>
                             </div>
                             <div class="ml-1">
                                 <div class="dropdown">
@@ -230,46 +233,30 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addAddress" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="addressName" class="form-label">Nama Alamat</label>
-                    <input type="text" class="form-control" id="addressName">
-                </div>
-                <div class="mb-3">
-                    <label for="addressName" class="form-label">Jalan</label>
-                    <input type="text" class="form-control" id="addressName">
-                </div>
-                <div class="row mb-3">
-                    <div class="col-6">
-                        <label for="addressName" class="form-label">Provinsi</label>
-                        <input type="text" class="form-control" id="addressName">
-                    </div>
-                    <div class="col-6">
-                        <label for="addressName" class="form-label">Kecamatan</label>
-                        <input type="text" class="form-control" id="addressName">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-8">
-                        <label for="addressName" class="form-label">Kelurahan</label>
-                        <input type="text" class="form-control" id="addressName">
-                    </div>
-                    <div class="col-4">
-                        <label for="addressName" class="form-label">Kode POS</label>
-                        <input type="text" class="form-control" id="addressName">
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary">Simpan</button>
-            </div>
-        </div>
-        </div>
-    </div>
     @include('components.navigation.footer')
     @include('components.navigation.copyright')
+    <script>
+        var portSearch = $('#portofolioSearch');
+        var portOptions = $('#portofolioOptions');
+        var csrf = $('meta[name="csrf-token"]').attr('content');
+        portSearch.on('keyup', function(){
+            var query = portSearch.val();
+            if(query.length > 2){
+                $.ajax({
+                    type: "post",
+                    url: "/api/portofolio/search",
+                    data: {
+                        '_token': csrf,
+                        'query':query
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        array.forEach(element => {
+                            element
+                        });
+                    }
+                });
+            }
+        });
+    </script>
 @endsection
