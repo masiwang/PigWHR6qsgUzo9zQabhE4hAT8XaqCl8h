@@ -22,7 +22,7 @@ class PortofolioController extends Controller
                 'fund_checkouts.fund_checkout_status_id as status_id',
                 'fund_checkout_status.name as status',
                 'fund_checkouts.updated_at as pay_time',
-                'fund_products.monthly_return',
+                'fund_products.return',
                 'fund_checkouts.fund_start'
             )
             ->get();
